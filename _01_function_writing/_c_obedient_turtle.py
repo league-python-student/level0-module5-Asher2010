@@ -11,15 +11,31 @@ if __name__ == '__main__':
     turt = turtle.Turtle()
     #   2. Write 3 method definitions for drawing a square, triangle, and
     #      circle.
-    square(forward1, left1, forward2, left2, forward3, left3, forward4):
+    def square(forward, left):
+        turt.forward(forward)
+        turt.left(left)
+        turt.forward(forward)
+        turt.left(left)
+        turt.forward(forward)
+        turt.left(left)
+        turt.forward(forward)
+    def triangle(left1, forward1):
+        turt.left(left1)
+        turt.forward(forward1)
+        turt.left(left1)
+        turt.forward(forward1)
+        turt.left(left1)
+        turt.forward(forward1)
+    def circle(radius):
+        turt.circle(radius)
     #   3. Ask the user for the for a shape to draw.
     question = simpledialog.askstring(title="Shape", prompt="What shape would you like to draw?")
     #   4. Draw the appropriate shape depending on their answer (call the right
     #      function)
     if question == 'square':
-        square()
+        square(90, 90)
     elif question == 'triangle':
-        triangle()
+        triangle(120, 90)
     elif question == 'circle':
-        circle()
+        circle(100)
     pass
