@@ -2,6 +2,7 @@
 Have the turtle draw a row of houses.
 """
 from tkinter import messagebox, simpledialog, Tk
+import random
 import turtle
 
 if __name__ == '__main__':
@@ -28,13 +29,33 @@ if __name__ == '__main__':
     #      flat roofs and all the others have pointy roofs.
     turt.penup()
     turt.left(180)
-    turt.forward(455)
+    turt.forward(480)
     turt.left(90)
     turt.forward(350)
     turt.left(180)
     turt.pendown()
 
-    def draw_house(turn, forward, height, color):
+    def draw_pointy_roof(turn, forward, height, color, color2, turn2, forward2):
+        turt.color(color2)
+        turt.forward(height)
+        turt.right(turn)
+        turt.forward(forward)
+        turt.left(turn2)
+        turt.forward(forward2)
+        turt.left(turn2)
+        turt.forward(forward2)
+        turt.left(turn2)
+        turt.forward(forward)
+        turt.right(turn)
+        turt.forward(height)
+        turt.left(turn)
+        turt.color(color)
+        turt.forward(forward)
+        turt.left(turn)
+
+
+    def draw_flat_roof(turn, forward, height, color, color2):
+        turt.color(color2)
         turt.forward(height)
         turt.right(turn)
         turt.forward(forward)
@@ -45,7 +66,21 @@ if __name__ == '__main__':
         turt.forward(forward)
         turt.left(turn)
 
-    for i in range(10):
-        draw_house(90, 50,  100, 'green')
+
+    question = simpledialog.askstring(title=None, prompt="What size house do you want: small, medium, or large?")
+    if question == "small":
+        question = 60
+        for i in range(10):
+            draw_pointy_roof(90, 50, question, 'green', 'black', 120, 50)
+    elif question == "medium":
+        question = 120
+        for i in range(10):
+            draw_pointy_roof(90, 50, question, 'green', 'black', 120, 50)
+    elif question == "large":
+        question = 250
+        for i in range(10):
+            draw_flat_roof(90, 50,  question, 'green', 'black')
+
+
 
     pass
